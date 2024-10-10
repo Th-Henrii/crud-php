@@ -1,0 +1,51 @@
+body{
+    background-color:white;
+  }
+form{
+    position: absolute;
+    top:10%;
+    left:15%;
+    width:70%;
+    height:500px;
+    background-color:whitesmoke;
+    border-radius:12px;
+    box-shadow:1px 1px 3px black;
+}
+.form-label{
+    position:relative;
+    top:50%;
+    left:10%;
+    width:50%;
+}
+.form-control{
+    position:relative;
+    top:50%;
+    width:50%;
+    left:10%;
+}
+.mb-3{
+    position:relative;
+    top:20%;
+    width:50%;
+}
+button{
+    position: absolute;
+    top:65%;
+    left:5%;
+    color:white;
+}
+.a-register{
+    position: absolute;
+    top:55%;
+    left:5%;
+}
+img{
+    position:relative;
+    left: 60%;
+    bottom:30%;
+}
+h2{
+    position:absolute;
+    top:5%;
+    left:40%;
+}
