@@ -4,9 +4,7 @@ class Conexao {
     const User = 'root';
     const Pass = '';
     const Base = 'projeto-site';
-
-    private $conn;
-
+    
     // Cria e retorna a conexão
     function setConn() {
         $this->conn = new mysqli(self::Host, self::User, self::Pass, self::Base);

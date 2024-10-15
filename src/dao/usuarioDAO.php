@@ -1,14 +1,13 @@
 <?php
-    class newUsuario{
+    class UsuarioDAO{
         public function createUsuario(Usuario $usuario){
             try{
-                $sql = "INSERT INTO usuarios(nome,sobrenome,email) VALUES (:nome,:sobrenome:email)";
+                $sql = "INSERT INTO usuarios(nome,sobrenome,email) VALUES ('{$nome}','{$sobrenome}','{$email}')";
                 
                 $p_sql = Conexao::getConexao()->prepare($sql);
                 $p_sql = bindValue(":nome", $usuario->getNome());
                 $p_sql = bindValue(":sobrenome", $usuario->getSobrenome());
                 $p_sql = bindValue(":email", $usuario->getEmail());
-
 
                 return $p_sql->execute();
             }catch(Exception $e){
