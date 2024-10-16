@@ -1,61 +1,7 @@
-<!--<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/newusuario.css">
-    <title>Projeto Site</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-    <div class="container mt-5">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-body">
-                        <h2 class="text-center mb-4">Registre-se</h2>
-                        <form action="src/controller/usuarioController.php" method="POST">
-                            <input type="hidden" name="register" value="register"> 
-                            <div class="mb-3">
-                                <label for="nome" class="form-label">Nome Completo</label>
-                                <input type="text" class="form-control" id="nome" placeholder="Digite seu nome completo" value="" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="email" class="form-label">Sobrenome</label>
-                                <input type="text" class="form-control" id="email" placeholder="Digite seu sobrenome" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="password" class="form-label">E-mail</label>
-                                <input type="email" class="form-control" id="email" placeholder= "Digite seu E-mail" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="password" class="form-label">Confirme sua senha</label>
-                                <input type="password" class="form-control" id="password" placeholder="Confirme sua senha" required>
-                            </div>
-                            <div class="d-grid gap-2">
-                                <button type="submit" class="btn btn-primary">Registrar-se</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <style>
-        body{
-            background-color: whitesmoke;
-        }
-        .card-body{
-            box-shadow: 8px 10px 10px black;
-        }
-    </style>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>-->
 <?php
-include_once "./app/conexao/Conexao.php";
-include_once "./app/dao/UsuarioDAO.php";
-include_once "./app/model/Usuario.php";
+include(__DIR__ . '/../../config/config.php');
+include(__DIR__ . '/../dao/usuarioDAO.php');
+include(__DIR__ . '/../model/usuario.php');
 
 //instancia as classes
 $usuario = new Usuario();
@@ -69,7 +15,7 @@ $usuariodao = new UsuarioDAO();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <title>CRUD Simples PHP</title>
+    <title>Projeto Site</title>
     <style>
         .menu,
         thead {
@@ -86,12 +32,12 @@ $usuariodao = new UsuarioDAO();
     <nav class="navbar navbar-light bg-light menu">
         <div class="container">
             <a class="navbar-brand" href="#">
-                CRUD PHP POO
+                Projeto-Site
             </a>
         </div>
     </nav>
     <div class="container">
-        <form action="app/controller/UsuarioController.php" method="POST">
+        <form action="src/controller/usuarioController.php" method="POST">
             <div class="row">
                 <div class="col-md-3">
                     <label>Nome</label>
@@ -102,15 +48,8 @@ $usuariodao = new UsuarioDAO();
                     <input type="text" name="sobrenome" value="" class="form-control" require />
                 </div>
                 <div class="col-md-2">
-                    <label>Idade</label>
-                    <input type="number" name="idade" value="" class="form-control" require />
-                </div>
-                <div class="col-md-2">
-                    <label>Sexo</label>
-                    <select name="sexo" class="form-control">
-                        <option value="M">Masculino</option>
-                        <option value="F">Feminino</option>
-                    </select>
+                    <label>E-mail</label>
+                    <input type="email" name="idade" value="" class="form-control" require />
                 </div>
                 <div class="col-md-2">
                     <br>
@@ -126,24 +65,22 @@ $usuariodao = new UsuarioDAO();
                         <th>Id</th>
                         <th>Nome</th>
                         <th>Sobrenome</th>
-                        <th>Idade</th>
-                        <th>Sexo</th>
+                        <th>E-mail</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($usuariodao->read() as $usuario) : ?>
+                    <?php foreach ($usuariodao->readUsuario() as $usuario) : ?>
                         <tr>
                             <td><?= $usuario->getId() ?></td>
                             <td><?= $usuario->getNome() ?></td>
                             <td><?= $usuario->getSobrenome() ?></td>
-                            <td><?= $usuario->getIdade() ?></td>
-                            <td><?= $usuario->getSexo()?></td>
+                            <td><?= $usuario->getEmail() ?></td>
                             <td class="text-center">
                                 <button class="btn  btn-warning btn-sm" data-toggle="modal" data-target="#editar><?= $usuario->getId() ?>">
                                     Editar
                                 </button>
-                                <a href="app/controller/UsuarioController.php?del=<?= $usuario->getId() ?>">
+                                <a href="src/controller/usuarioController.php?del=<?= $usuario->getId() ?>">
                                 <button class="btn  btn-danger btn-sm" type="button">Excluir</button>
                                 </a>
                             </td>
@@ -159,7 +96,7 @@ $usuariodao = new UsuarioDAO();
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="app/controller/UsuarioController.php" method="POST">
+                                        <form action="src/controller/usuarioController.php" method="POST">
                                             <div class="row">
                                                 <div class="col-md-5">
                                                     <label>Nome</label>
@@ -172,21 +109,8 @@ $usuariodao = new UsuarioDAO();
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-3">
-                                                    <label>Idade</label>
-                                                    <input type="number" name="idade" value="<?= $usuario->getIdade() ?>" class="form-control" require />
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <label>Sexo</label>
-                                                    <select name="sexo" class="form-control">
-                                                        <?php if ($usuario->getSexo() == 'F') : ?>
-                                                            <option value="F">Feminino</option>
-                                                            <option value="M">Masculino</option>
-                                                        <?php else : ?>
-                                                            <option value="M">Masculino</option>
-                                                            <option value="F">Feminino</option>
-                                                        <?php endif ?>
-
-                                                    </select>
+                                                    <label>Email</label>
+                                                    <input type="number" name="idade" value="<?= $usuario->getEmail() ?>" class="form-control" require />
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -198,7 +122,6 @@ $usuariodao = new UsuarioDAO();
                                             </div>
                                         </form>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
@@ -212,6 +135,4 @@ $usuariodao = new UsuarioDAO();
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
-
 </html>
-
