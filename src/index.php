@@ -1,3 +1,15 @@
+<?php
+    include 'config/config.php';
+    include 'Controllers/usuarioController.php';
+    include 'UsuarioDAO/usuarioDAO.php';
+
+    //instacia a conexão com banco de dados
+    $bancodedados = new Conexao();
+    $conec = $bancodedados->getConnection();
+
+    $usuarioControllers = new usuarioController();
+    $usuarioDAO = new usuarioDAO();
+?>  
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -9,7 +21,7 @@
 <body>
     <div class="form-container">
         <h1>Cadastro</h1>
-        <form action="" method="POST">
+        <form action="Model/usuarioModel.php" method="POST">
             <label for="nome">Nome:</label>
             <input type="text" id="nome" name="nome" placeholder="Digite seu nome">
 
@@ -19,18 +31,8 @@
             <label for="senha">Senha:</label>
             <input type="password" id="senha" name="senha" placeholder="Digite sua senha">
 
-            <button type="submit">Cadastrar</button>
+            <button class="btn btn-primary" type="submit" name="cadastrar">Cadastrar</button>
         </form>
     </div>
 </body>
 </html>
-<?php
-    require_once '../config/config.php';
-    require_once 'Controllers/usuarioController.php';
-
-    //instacia a conexão com banco de dados
-    $bancodedados = new Conexao();
-    $conec = $bancodedados->getConnection();
-
-    $usuarioControllers = new usuarioController();
-?>  

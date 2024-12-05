@@ -1,6 +1,6 @@
 <?php
-    require_once '../config/config.php';
-    require_once 'Controllers/usuarioController.php';
+    include  'config/config.php';
+    include  'Controllers/usuarioController.php';
 
     class usuarioDAO{
 
@@ -12,11 +12,12 @@
                 $p_sql = bindValue(":nome",$usuario->getName());
                 $p_sql = bindValue(":email",$usuario->getEmail());
                 $p_sql = bindValue(":senha",$usuario->getSenha());
+                return $p_sql->execute();
             }
-            return $p_sql->execute();
-            } catch (Exception $e) {
-            print "Erro ao Inserir usuario <br>" . $e . '<br>';
-        }
+            catch (Exception $e) {
+                echo "Erro ao Inserir usuario <br>". $e->getMessage();
+            }
+        } 
         public function read(){
             try {
                 $sql = "SELECT * FROM usuarios order by nome asc";
@@ -29,7 +30,7 @@
                 return $f_lista;
 
             } catch (Exeception $e) {
-                print "Ocorreu um erro ao tentar buscar usuarios." . $e;
+                echo "Ocorreu um erro ao tentar buscar usuarios." .$e->getMessage();
             }
         }
         public function delete(Usuario $usuario) {
@@ -39,7 +40,7 @@
                 $p_sql->bindValue(":id", $usuario->getId());
                 return $p_sql->execute();
             } catch (Exception $e) {
-                echo "Erro ao Excluir usuario<br> $e <br>";
+                echo "Erro ao Excluir usuario<br>".$e->getMessage();
             }
         }
     }
