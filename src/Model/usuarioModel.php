@@ -2,25 +2,24 @@
     include_once __DIR__ . '/../config/config.php';
     include_once __DIR__ . '/../Controllers/usuarioController.php';
     $usuario = new Usuario();
-    $conexao = new Conexao();
-
+    $conexao = Conexao::getConexao();
     class usuarioModel{
-        public const $conn;
+        public $conn;
         public $stmt;
-        public function create($usuario) {
-        // Construtor que espera um parâmetro para a conexão
-        function construct($conn) {
+        public function construct($conn, $stmt) {
             $this->conn = $conn;
             $this->stmt = $stmt;
         }
+        public function create($usuario) {
             try {
                 $sql = "INSERT INTO usuarios (nome, email, senha) VALUES (:nome, :email, :senha)";
-                $stmt->prepare($sql); 
-                $stmt->bindValue(':nome', $usuario->nome);
-                $stmt->bindValue(':email', $usuario->email);
-                $stmt->bindValue(':senha', $usuario->senha);
+                $stmt = $this->conn->prepare($sql);
+                $stmt->bindValue(':nome', $usuario->getNome());
+                $stmt->bindValue(':email', $usuario->getEmail());
+                $stmt->bindValue(':senha', password_hash($usuario->getSenha(), PASSWORD_DEFAULT));
                 $stmt->execute();
                 echo "Usuário criado com sucesso!";
+                header("location:gestãoDeUsuarios.php");
             } catch (PDOException $e) {
                 echo "Erro ao criar usuário: " . $e->getMessage();
             }
@@ -39,7 +38,7 @@
                 echo "Ocorreu um erro ao tentar buscar usuarios." .$e->getMessage();
             }
         }
-        public function delete(Usuario $usuario) {
+        public function delete($usuario) {
             try {
                 $sql = "DELETE FROM usuarios WHERE id = :id";
                 $p_sql = Conexao::getConexao()->prepare($sql);

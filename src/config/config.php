@@ -1,24 +1,17 @@
 <?php
 class Conexao {
-    public $servername = "localhost";
-    public $dbName = "crudphp";
-    public $username = "root";
-    public $password = "";
+    private static $conn;
 
     public static function getConexao() {
-        try {
-            $servername = "localhost";
-            $dbName = "crudphp";
-            $username = "root";
-            $password = "";
-            
-            $conn = new PDO("mysql:host=$servername;dbname=$dbName", $username, $password);
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            echo "Conectado!";
-        } catch (PDOException $e) {
-            echo "Conexao falhou! - " . $e->getMessage();
+        if (!self::$conn) {
+            try {
+                self::$conn = new PDO('mysql:host=localhost;dbname=crudphp', 'root', '');
+                self::$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            } catch (PDOException $e) {
+                die("Erro de conexão: " . $e->getMessage());
+            }
         }
-        return $conn;
+        return self::$conn;
     }
 }
 ?>
