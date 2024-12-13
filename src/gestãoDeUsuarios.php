@@ -1,7 +1,7 @@
 <?php
     include_once 'config/config.php';
     include_once "Model/usuarioModel.php";
-    include_once "Controllers/usuarioController.php";
+    include_once "Model/usuarioController.php";
 
     // Criando uma conexão
     try {
@@ -83,7 +83,7 @@ button:hover {
 </style>
     <div class="form-container">
         <h1>Cadastro</h1>
-        <form action="Controllers/usuarioController.php" method="POST">
+        <form action="Controllers/usuario.php" method="POST">
             <label for="nome">Nome:</label>
             <input type="text" id="nome" name="nome" placeholder="Digite seu nome">
             <label for="email">Email:</label>
