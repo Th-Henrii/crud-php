@@ -1,49 +1,47 @@
 <?php
-    require_once(__DIR__ . '/../config/config.php');
-    require_once(__DIR__ . '/../Controllers/usuarioController.php');
-    require_once(__DIR__ . '/../UsuarioDAO/usuarioDAO.php');
-
+    include_once __DIR__ . '/../config/config.php';
+    include_once __DIR__ . '/../Controllers/usuarioController.php';
+    $usuario = new Usuario();
     $bancodedados = new Conexao();
-    $conec = $bancodedados->getConnection();
-
-    $usuario = new usuarioController();
-    $usuariodao = new UsuarioDAO();
-
-    $d = filter_input_array(INPUT_POST);
-
-    //se a operação for gravar entra nessa condição
-    if(isset($_POST['cadastrar'])){
-    
-        $usuario->setNome($d['nome']);
-        $usuario->setEmail($d['email']);
-        $usuario->setSenha($d['senha']);
-    
-        $usuariodao->create($usuario);
-    
-        header("Location: ../../");
-    } 
-    // se a requisição for editar
-    //else if(isset($_POST['editar'])){
-    
-     //   $usuario->setNome($d['nome']);
-     //   $usuario->setSobrenome($d['sobrenome']);
-     //   $usuario->setIdade($d['idade']);
-      //  $usuario->setSexo($d['sexo']);
-      //  $usuario->setId($d['id']);
-    
-     //   $usuariodao->update($usuario);
-    
-      //  header("Location: ../../");
-   // }
-    // se a requisição for deletar
-    else if(isset($_GET['del'])){
-    
-        $usuario->setId($_GET['del']);
-    
-        $usuariodao->delete($usuario);
-    
-        header("Location: ../../");
-    }else{
-        header("Location: ../../");
+    $conec = $bancodedados->getConexao();
+    class usuarioModel{
+        public function create(){
+            try{
+                $sql = "INSERT INTO usuarios(nome,email,senha) VALUES (
+                  :nome,:email,:senha)";
+                $p_sql = Conexao::getConexao()->prepare($sql);
+                $p_sql = bindValue(":nome",$usuario->getName());
+                $p_sql = bindValue(":email",$usuario->getEmail());
+                $p_sql = bindValue(":senha",$usuario->getSenha());
+                return $p_sql->execute();
+            }
+            catch (Exception $e) {
+                echo "Erro ao Inserir usuario <br>". $e->getMessage();
+            }
+        } 
+        public function read(){
+            try {
+                $sql = "SELECT * FROM usuarios order by nome asc";
+                $resultRead = Conexao::getConexao()->query($sql);
+                $lista = $resultRead->fetchAll(PDO::FETCH_ASSOC);
+                $f_lista = array();
+                foreach ($lista as $l) {
+                    $f_lista[] = $this->listaUsuarios($l);
+                }
+                return $f_lista;
+            } catch (Exeception $e) {
+                echo "Ocorreu um erro ao tentar buscar usuarios." .$e->getMessage();
+            }
+        }
+        public function delete(Usuario $usuario) {
+            try {
+                $sql = "DELETE FROM usuarios WHERE id = :id";
+                $p_sql = Conexao::getConexao()->prepare($sql);
+                $p_sql->bindValue(":id", $usuario->getId());
+                return $p_sql->execute();
+            } catch (Exception $e) {
+                echo "Erro ao Excluir usuario<br>".$e->getMessage();
+            }
+        }
     }
 ?>
