@@ -2,13 +2,20 @@
     include_once __DIR__ . '/../config/config.php';
     include_once __DIR__ . '/../Controllers/usuarioController.php';
     $usuario = new Usuario();
-    $conexaoObj = new Conexao();
-    $conn = $conexaoObj->getConexao();
+    $conexao = new Conexao();
+
     class usuarioModel{
+        public const $conn;
+        public $stmt;
         public function create($usuario) {
+        // Construtor que espera um parâmetro para a conexão
+        function construct($conn) {
+            $this->conn = $conn;
+            $this->stmt = $stmt;
+        }
             try {
                 $sql = "INSERT INTO usuarios (nome, email, senha) VALUES (:nome, :email, :senha)";
-                $stmt = $conn->prepare($sql); 
+                $stmt->prepare($sql); 
                 $stmt->bindValue(':nome', $usuario->nome);
                 $stmt->bindValue(':email', $usuario->email);
                 $stmt->bindValue(':senha', $usuario->senha);
@@ -42,5 +49,11 @@
                 echo "Erro ao Excluir usuario<br>".$e->getMessage();
             }
         }
-    }
+        public function closeSTMT ($stmt){
+            return $stmt->close();
+        }
+        public function closeConn($conn){
+            return $conn->close();
+        }
+}
 ?>

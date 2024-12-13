@@ -1,35 +1,43 @@
 <?php
     class Usuario{
+    
         private $id;
         private $nome;
         private $email;
         private $senha;
-        public function construtor($id,$nome, $email, $senha) {
-            $this->id;
-            $this->nome;
-            $this->email;
-            $this->senha;
+        
+        function getId() {
+            return $this->id;
         }
-        public function getNome(){
+    
+        function getNome() {
             return $this->nome;
         }
-        public function setNome(){
-            return $this->nome = $nome;
-        }
-        public function getEmail(){
+    
+        function getEmail() {
             return $this->email;
         }
-        public function setEmail(){
-            return $this->email = $email;
-        }
-        public function getSenha(){
+    
+        function getSenha() {
             return $this->senha;
         }
-        public function setSenha(){
-            return $this->senha = $senha;
+    
+    
+        function setId($id) {
+            $this->id = $id;
         }
-        public function setID(){
-            return $this->id = $id;
+    
+        function setNome($nome) {
+            $this->nome = $nome;
         }
+    
+        function setEmail($email) {
+            $this->sobrenome = $email;
+        }
+    
+        function setSenha($senha) {
+            $this->idade = $senha;
+        }
+    
     }
 ?>
