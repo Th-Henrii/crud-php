@@ -2,23 +2,22 @@
     include_once __DIR__ . '/../config/config.php';
     include_once __DIR__ . '/../Controllers/usuarioController.php';
     $usuario = new Usuario();
-    $bancodedados = new Conexao();
-    $conec = $bancodedados->getConexao();
+    $conexaoObj = new Conexao();
+    $conn = $conexaoObj->getConexao();
     class usuarioModel{
-        public function create(){
-            try{
-                $sql = "INSERT INTO usuarios(nome,email,senha) VALUES (
-                  :nome,:email,:senha)";
-                $p_sql = Conexao::getConexao()->prepare($sql);
-                $p_sql = bindValue(":nome",$usuario->getName());
-                $p_sql = bindValue(":email",$usuario->getEmail());
-                $p_sql = bindValue(":senha",$usuario->getSenha());
-                return $p_sql->execute();
+        public function create($usuario) {
+            try {
+                $sql = "INSERT INTO usuarios (nome, email, senha) VALUES (:nome, :email, :senha)";
+                $stmt = $conn->prepare($sql); 
+                $stmt->bindValue(':nome', $usuario->nome);
+                $stmt->bindValue(':email', $usuario->email);
+                $stmt->bindValue(':senha', $usuario->senha);
+                $stmt->execute();
+                echo "Usuário criado com sucesso!";
+            } catch (PDOException $e) {
+                echo "Erro ao criar usuário: " . $e->getMessage();
             }
-            catch (Exception $e) {
-                echo "Erro ao Inserir usuario <br>". $e->getMessage();
-            }
-        } 
+        }
         public function read(){
             try {
                 $sql = "SELECT * FROM usuarios order by nome asc";
