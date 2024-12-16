@@ -15,7 +15,7 @@ $usuariodao = new UsuarioDAO();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <title>Gestão de Tarefas</title>
+    <title>CRUD Simples PHP</title>
     <style>
         .menu,
         thead {
@@ -32,19 +32,19 @@ $usuariodao = new UsuarioDAO();
     <nav class="navbar navbar-light bg-light menu">
         <div class="container">
             <a class="navbar-brand" href="#">
-                Gestão de usuarios
+                Gestão de Usuarios
             </a>
         </div>
     </nav>
     <div class="container">
-        <form action="controller/UsuarioController.php" method="POST">
+        <form action="controllers/UsuarioController.php" method="POST">
             <div class="row">
                 <div class="col-md-3">
                     <label>Nome</label>
                     <input type="text" name="nome" value="" autofocus class="form-control" require />
                 </div>
                 <div class="col-md-5">
-                    <label>Email</label>
+                    <label>E-mail</label>
                     <input type="email" name="email" value="" class="form-control" require />
                 </div>
                 <div class="col-md-2">
@@ -64,9 +64,8 @@ $usuariodao = new UsuarioDAO();
                     <tr>
                         <th>Id</th>
                         <th>Nome</th>
-                        <th>Sobrenome</th>
-                        <th>Idade</th>
-                        <th>Sexo</th>
+                        <th>Email</th>
+                        <th>Senha</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
@@ -78,11 +77,11 @@ $usuariodao = new UsuarioDAO();
                             <td><?= $usuario->getEmail() ?></td>
                             <td><?= $usuario->getSenha() ?></td>
                             <td class="text-center">
-                                <button class="btn  btn-warning btn-sm" data-toggle="modal" data-target="#editar><?= $usuario->getId() ?>">
+                                <button class="btn  btn-warning btn-sm" data-toggle="modal" data-target="#editar><?= $usuario->getId() ?>" type="submit">
                                     Editar
                                 </button>
-                                <a href="app/controller/UsuarioController.php?del=<?= $usuario->getId() ?>">
-                                <button class="btn  btn-danger btn-sm" type="button">Excluir</button>
+                                <a href="controllers/UsuarioController.php?del=<?= $usuario->getId() ?>">
+                                <button class="btn  btn-danger btn-sm" type="submit" id="del">Excluir</button>
                                 </a>
                             </td>
                         </tr>
@@ -97,21 +96,21 @@ $usuariodao = new UsuarioDAO();
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="app/controller/UsuarioController.php" method="POST">
+                                        <form action="controllers/UsuarioController.php" method="POST">
                                             <div class="row">
                                                 <div class="col-md-5">
                                                     <label>Nome</label>
                                                     <input type="text" name="nome" value="<?= $usuario->getNome() ?>" class="form-control" require />
                                                 </div>
                                                 <div class="col-md-7">
-                                                    <label>Sobrenome</label>
-                                                    <input type="text" name="sobrenome" value="<?= $usuario->getEmail() ?>" class="form-control" require />
+                                                    <label>Email</label>
+                                                    <input type="text" name="email" value="<?= $usuario->getEmail() ?>" class="form-control" require />
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-3">
                                                     <label>Idade</label>
-                                                    <input type="number" name="idade" value="<?= $usuario->getIdade() ?>" class="form-control" require />
+                                                    <input type="text" name="senha" value="<?= $usuario->getSenha() ?>" class="form-control" require />
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -137,5 +136,4 @@ $usuariodao = new UsuarioDAO();
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
-
 </html>

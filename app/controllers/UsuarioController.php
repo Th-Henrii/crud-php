@@ -7,9 +7,6 @@ include_once "../dao/UsuarioDAO.php";
 $usuario = new Usuario();
 $usuariodao = new UsuarioDAO();
 
-//pega todos os dados passado por POST
-
-$d = filter_input_array(INPUT_POST);
 
 //se a operação for gravar entra nessa condição
 if(isset($_POST['cadastrar'])){
@@ -20,15 +17,15 @@ if(isset($_POST['cadastrar'])){
 
     $usuariodao->create($usuario);
 
-    header("Location: ../../gestãoDeUsuarios.php");
+    header("Location: ../../");
 } 
 // se a requisição for editar
 else if(isset($_POST['editar'])){
 
-    $usuario->setNome($d['nome']);
-    $usuario->setEmail($d['email']);
-    $usuario->setSenha($d['senha']);
-    $usuario->setId($d['id']);
+    $usuario->setNome($_POST['nome']);
+    $usuario->setEmail($_POST['email']);
+    $usuario->setSenha($_POST['senha']);
+    $usuario->setId($_POST['id']);
 
     $usuariodao->update($usuario);
 

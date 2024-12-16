@@ -36,15 +36,14 @@
                 $sql = "UPDATE usuarios set
                     
                       nome=:nome,
-                      sobrenome=:sobrenome,
-                      idade=:idade,
-                      sexo=:sexo                  
+                      email=:email,
+                      senha=:senha                
                                                                            
                       WHERE id = :id";
                 $p_sql = Conexao::getConexao()->prepare($sql);
                 $p_sql->bindValue(":nome", $usuario->getNome());
-                $p_sql->bindValue(":sobrenome", $usuario->getEmail());
-                $p_sql->bindValue(":idade", $usuario->getSenha());
+                $p_sql->bindValue(":email", $usuario->getEmail());
+                $p_sql->bindValue(":senha", $usuario->getSenha());
                 $p_sql->bindValue(":id", $usuario->getId());
                 return $p_sql->execute();
             } catch (Exception $e) {
@@ -54,7 +53,7 @@
     
         public function delete(Usuario $usuario) {
             try {
-                $sql = "DELETE FROM usuario WHERE id = :id";
+                $sql = "DELETE FROM usuarios WHERE id=:id";
                 $p_sql = Conexao::getConexao()->prepare($sql);
                 $p_sql->bindValue(":id", $usuario->getId());
                 return $p_sql->execute();
