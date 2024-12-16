@@ -21,7 +21,7 @@ include_once "../conexao/Conexao.php";
             } 
             else{
                // Usuário ou senha inválida
-               header('Location:login.php');
+               header('Location:../../index.php');
             }
          }
       } catch (Exception $e) {
