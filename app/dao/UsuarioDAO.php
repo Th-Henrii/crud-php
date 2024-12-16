@@ -1,11 +1,11 @@
 <?php
-    class usuarioModel{
+    class UsuarioDAO{
         public function create(Usuario $usuario) {
             try {
                 $sql = "INSERT INTO usuarios (                   
-                      nome,sobrenome,idade,sexo)
+                      nome,email,senha)
                       VALUES (
-                      :nome,:sobrenome,:idade,:sexo)";
+                      :nome,:email,:senha)";
     
                 $p_sql = Conexao::getConexao()->prepare($sql);
                 $p_sql->bindValue(":nome", $usuario->getNome());
@@ -17,7 +17,6 @@
                 print "Erro ao Inserir usuario <br>" . $e . '<br>';
             }
         }
-    
         public function read() {
             try {
                 $sql = "SELECT * FROM usuarios order by nome asc";
@@ -32,7 +31,6 @@
                 print "Ocorreu um erro ao tentar Buscar Todos." . $e;
             }
         }
-         
         public function update(Usuario $usuario) {
             try {
                 $sql = "UPDATE usuarios set
@@ -64,17 +62,12 @@
                 echo "Erro ao Excluir usuario<br> $e <br>";
             }
         }
-    
-    
-        
-    
         private function listaUsuarios($row) {
             $usuario = new Usuario();
             $usuario->setId($row['id']);
             $usuario->setNome($row['nome']);
-            $usuario->setSobrenome($row['sobrenome']);
-            $usuario->setIdade($row['idade']);
-            $usuario->setSexo($row['sexo']);
+            $usuario->setEmail($row['email']);
+            $usuario->setSenha($row['senha']);
     
             return $usuario;
         }
