@@ -14,26 +14,27 @@ $usuariodao = new UsuarioDAO();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestão de Tarefas</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-    <nav class="navbar navbar-dark bg-dark justify-content-center">
-    <div class="navbar">
-    <ul class="nav justify-content-center">
+<nav class="navbar navbar-dark bg-dark justify-content-center">
+<div class="navbar">
+  <ul class="nav justify-content-center">
     <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="#">Home</a>
+    <a class="nav-link active" aria-current="page" href="#">Home</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="views/gestaoDeUsuarios.php">Gestão de Usuarios</a>
+    <a class="nav-link" href="">Gestão de Usuarios</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
+    <a class="nav-link" href="#">Link</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
     </li>
-    </ul>
-    </div>
-    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBackdrop" aria-controls="offcanvasWithBackdrop">-</button>
+  </ul>
+</div>
+<button class="btn btn-light position-absolute top-20 start-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBackdrop" aria-controls="offcanvasWithBackdrop">Mais</button>
 <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
   <div class="offcanvas-header">
     <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Colored with scrolling</h5>
@@ -48,8 +49,12 @@ $usuariodao = new UsuarioDAO();
     <h5 class="offcanvas-title" id="offcanvasWithBackdropLabel">Offcanvas with backdrop</h5>
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
-  <div class="offcanvas-body">
-    <p>.....</p>
+  <div class="offcanvas-body bg-dark">
+    <ul>
+      <li>
+      <a href="views/gestaoDeUsuarios.php" class="text-white bg-dark">Gestão de usuarios</a>
+      </li>
+    </ul>
   </div>
 </div>
 <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
@@ -65,6 +70,7 @@ $usuariodao = new UsuarioDAO();
 <br>
 <h1>Olá, <?php echo $_SESSION['nome_usuario'];?></h1>
 <br>
+
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
