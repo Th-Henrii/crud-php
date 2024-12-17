@@ -8,9 +8,9 @@
                       :nome,:email,:senha)";
     
                 $p_sql = Conexao::getConexao()->prepare($sql);
-                $p_sql->passorwd_hash(bindValue(":nome", $usuario->getNome()));
-                $p_sql->password_hash(bindValue(":email", $usuario->getEmail()));
-                $p_sql->passoword_hash(bindValue(":senha", $usuario->getSenha()));
+                $p_sql->bindValue(":nome", $usuario->getNome());
+                $p_sql->bindValue(":email", $usuario->getEmail());
+                $p_sql->bindValue(":senha", $usuario->getSenha());
                 
                 return $p_sql->execute();
             } catch (Exception $e) {

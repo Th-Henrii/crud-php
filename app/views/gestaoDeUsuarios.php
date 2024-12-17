@@ -37,7 +37,7 @@ $usuariodao = new UsuarioDAO();
         </div>
     </nav>
     <div class="container">
-        <form action="controllers/UsuarioController.php" method="POST">
+        <form action="../controllers/UsuarioController.php" method="POST">
             <div class="row">
                 <div class="col-md-3">
                     <label>Nome</label>
@@ -80,7 +80,7 @@ $usuariodao = new UsuarioDAO();
                                 <button class="btn  btn-primary btn-sm" data-toggle="modal" data-target="#editar><?= $usuario->getId() ?>" type="submit">
                                     Editar
                                 </button>
-                                <a href="controllers/UsuarioController.php?del=<?= $usuario->getId() ?>">
+                                <a href="../controllers/UsuarioController.php?del=<?= $usuario->getId() ?>">
                                 <button class="btn  btn-danger btn-sm" type="submit" id="del">Excluir</button>
                                 </a>
                             </td>
