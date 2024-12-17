@@ -29,7 +29,7 @@ $usuariodao = new UsuarioDAO();
 </head>
 
 <body>
-    <nav class="navbar navbar-light bg-light menu">
+    <nav class="navbar navbar-dark bg-dark justify-content-center">
         <div class="container">
             <a class="navbar-brand" href="#">
                 Gestão de Usuarios
@@ -77,7 +77,7 @@ $usuariodao = new UsuarioDAO();
                             <td><?= $usuario->getEmail() ?></td>
                             <td><?= $usuario->getSenha() ?></td>
                             <td class="text-center">
-                                <button class="btn  btn-warning btn-sm" data-toggle="modal" data-target="#editar><?= $usuario->getId() ?>" type="submit">
+                                <button class="btn  btn-primary btn-sm" data-toggle="modal" data-target="#editar><?= $usuario->getId() ?>" type="submit">
                                     Editar
                                 </button>
                                 <a href="controllers/UsuarioController.php?del=<?= $usuario->getId() ?>">
