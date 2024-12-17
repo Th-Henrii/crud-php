@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 include_once "conexao/Conexao.php";
 include_once "dao/UsuarioDAO.php";
 include_once "model/Usuario.php";
@@ -10,10 +10,14 @@ $usuariodao = new UsuarioDAO();
 $requisicao = isset($_GET['page']);
 
 switch($requisicao) {
+  case "home": 
+    include "views/home.php";
+    break;
   case "ordensdeproducao": 
       include "views/ordensdeproducao.php";
       break;
   default:
+  include "views/home.php";
 }
 ?>
 <!DOCTYPE html>
@@ -67,7 +71,6 @@ switch($requisicao) {
 </div>
 </nav>
 <br>
-<h1>Olá, <?php echo $_SESSION['nome_usuario'];?></h1>
 <br>
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
