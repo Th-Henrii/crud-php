@@ -96,7 +96,7 @@ $usuariodao = new UsuarioDAO();
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="controllers/UsuarioController.php" method="POST">
+                                        <form action="../controllers/UsuarioController.php" method="POST">
                                             <div class="row">
                                                 <div class="col-md-5">
                                                     <label>Nome</label>

@@ -17,7 +17,7 @@ if(isset($_POST['cadastrar'])){
 
     $usuariodao->create($usuario);
 
-    header("Location: ../../");
+    header("Location: ../views/gestaoDeUsuarios.php");
 } 
 // se a requisição for editar
 else if(isset($_POST['editar'])){
@@ -29,7 +29,7 @@ else if(isset($_POST['editar'])){
 
     $usuariodao->update($usuario);
 
-    header("Location: ../../");
+    header("Location: ../views/gestaoDeUsuarios.php");
 }
 // se a requisição for deletar
 else if(isset($_GET['del'])){
@@ -38,7 +38,7 @@ else if(isset($_GET['del'])){
 
     $usuariodao->delete($usuario);
 
-    header("Location: ../../");
+    header("Location: ../views/gestaoDeUsuarios.php");
 }else{
     header("Location: ../../");
 }
