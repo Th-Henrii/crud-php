@@ -14,6 +14,7 @@ $usuariodao = new UsuarioDAO();
     <title>Gestão de Tarefas</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/ordensdeproducao.css">
 </head>
 <body>
 <nav class="navbar navbar-dark bg-dark justify-content-center">
@@ -24,7 +25,7 @@ $usuariodao = new UsuarioDAO();
             </h1>
         </div>
 </div>
-<button class="btn btn-light position-absolute top-20 start-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBackdrop" aria-controls="offcanvasWithBackdrop">||||</button>
+<button class="btn btn-light position-absolute top-20 start-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBackdrop" aria-controls="offcanvasWithBackdrop" id="butonitens">||||</button>
 <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
   <div class="offcanvas-header">
     <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Colored with scrolling</h5>
@@ -63,8 +64,8 @@ $usuariodao = new UsuarioDAO();
 </body>
 </html>
 <?php
+//Realiza direcionamento dinamico entre as páginas
 $requisicao = isset($_GET['page']);
-
 switch($requisicao) {
   case "ordensdeproducao": 
       include "views/ordensdeproducao.php";

@@ -109,7 +109,7 @@ $usuariodao = new UsuarioDAO();
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-3">
-                                                    <label>Idade</label>
+                                                    <label>Senha</label>
                                                     <input type="text" name="senha" value="<?= $usuario->getSenha() ?>" class="form-control" require />
                                                 </div>
                                             </div>
