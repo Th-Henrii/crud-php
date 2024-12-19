@@ -1,31 +1,44 @@
 <?php
-    class ordemProducao(){
+    class ordemProducao {
+        private $idOP;
         private $numop;
         private $relprd;
         private $nomeUsina;
-
-        private function __constructOP($numop, $relprd, $nomeUsina){
+    
+        
+        public function __constructOP($idOP = null, $numop = null, $relprd = null, $nomeUsina = null) {
+            $this->idOP = $idOP;
             $this->numop = $numop;
             $this->relprd = $relprd;
             $this->nomeUsina = $nomeUsina;
         }
-        public function getNumOP(){
+        public function getNumOP() {
             return $this->numop;
         }
-        public function getRelprd(){
+    
+        public function getRelprd() {
             return $this->relprd;
         }
-        public function getNomeUsina(){
+    
+        public function getNomeUsina() {
             return $this->nomeUsina;
         }
-        public function setNumOP(){
+        public function getIdOP() {
+            return $this->idOP;
+        }
+        public function setNumOP($numop) {
             $this->numop = $numop;
         }
-        public function setRelprd(){
+    
+        public function setRelprd($relprd){
             $this->relprd = $relprd;
         }
-        public function setNomeUsina(){
+        public function setNomeUsina($nomeUsina){
             $this->nomeUsina = $nomeUsina;
         }
+        public function setIdOP($idOP){
+            $this->idOP = $idOP;
+        }
     }
+    
 ?>

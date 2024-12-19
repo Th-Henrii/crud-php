@@ -2,9 +2,12 @@
 include_once "conexao/Conexao.php";
 include_once "dao/UsuarioDAO.php";
 include_once "model/Usuario.php";
+include_once "model/ordemProducao.php";
+include_once "dao/opDAO.php";
 //instancia as classes
 $usuario = new Usuario();
 $usuariodao = new UsuarioDAO();
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
