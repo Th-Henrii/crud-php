@@ -26,19 +26,19 @@ class Usuario {
     public function getSenha() {
         return $this->senha;
     }
-    public function setId($id) {
+    public function  setId($id):void{
         $this->id = $id;
     }
 
-    public function setNome($nome) {
+    public function setNome($nome):void {
         $this->nome = $nome;
     }
 
-    public function setEmail($email) {
+    public function setEmail($email):void {
         $this->email = $email;
     }
 
-    public function setSenha($senha) {
+    public function setSenha($senha):void {
         $this->senha = $senha;
     }
 }
