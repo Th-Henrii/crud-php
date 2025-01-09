@@ -19,7 +19,7 @@ $opdao = new opDAO();
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-      <form action="controllers/opController.php" method="POST">
+      <form action="../../src/controllers/opController.php" method="POST">
             <div class="row">
                 <div class="col-md-5">
                     <label>Numero da OP</label>
@@ -31,7 +31,7 @@ $opdao = new opDAO();
                 </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-7">
                         <label>Usina</label>
                         <input type="text" name="nomeusina" class="form-control" require />
                     </div>
@@ -86,7 +86,7 @@ $opdao = new opDAO();
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="../controllers/UsuarioController.php" method="POST">
+                                        <form action="../src/controllers/OPController.php" method="POST">
                                             <div class="row">
                                                 <div class="col-md-5">
                                                     <label>Nome</label>
