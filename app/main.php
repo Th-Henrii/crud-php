@@ -47,7 +47,7 @@ $usuariodao = new UsuarioDAO();
       <br>
       <span class="d-block p-2 bg-dark text-white"><a href="views/gestaoDeUsuarios.php" class="text-white bg-dark">Gestão de usuarios</a></span>
       <br>
-      <span class="d-block p-2 bg-dark text-white"><a href="?page=ordensdeproducao" class="text-white bg-dark">Ordens de Produção</a></span>
+      <span class="d-block p-2 bg-dark text-white"><a href="?page=app/ordensdeproducao" class="text-white bg-dark">Ordens de Produção</a></span>
   </div>
 </div>
 <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
@@ -70,10 +70,10 @@ $usuariodao = new UsuarioDAO();
 //Realiza direcionamento dinamico entre as páginas
 $requisicao = isset($_GET['page']);
 switch($requisicao) {
-  case "ordensdeproducao": 
+  case "app/ordensdeproducao": 
       include "views/ordensdeproducao.php";
       break;
-      case "gestaodeusuarios": 
+      case "app/gestaodeusuarios": 
         include "views/gestaoDeUsuarios.php";
         break;
   default:
