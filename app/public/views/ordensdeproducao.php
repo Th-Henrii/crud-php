@@ -19,7 +19,7 @@ $opdao = new opDAO();
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-      <form action="../../src/controllers/opController.php" method="POST">
+      <form action="../src/controllers/opController.php" method="POST">
             <div class="row">
                 <div class="col-md-5">
                     <label>Numero da OP</label>
