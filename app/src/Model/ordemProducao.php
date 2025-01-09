@@ -13,18 +13,18 @@
             $this->nomeUsina = $nomeUsina;
         }
         public function getNumOP() {
-            return $this->numop;
+            return $numop;
         }
     
         public function getRelprd() {
-            return $this->relprd;
+            return $relprd;
         }
     
         public function getNomeUsina() {
-            return $this->nomeUsina;
+            return $nomeUsina;
         }
         public function getIdOP() {
-            return $this->idOP;
+            return $idOP;
         }
         public function setNumOP($numop) {
             $this->numop = $numop;

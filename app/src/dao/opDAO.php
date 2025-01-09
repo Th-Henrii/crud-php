@@ -2,8 +2,8 @@
    class opDAO{
     public function createOP(ordemProducao $op){
         try {
-            $sql = "INSERT INTO ordensproducao (numop, relprd, nomeusina)
-                    VALUES (:numop, :relprd, :nomeusina)";
+            $sql = "INSERT INTO ordensproducao (numop, relprd, nomeUsina)
+                    VALUES (:numop, :relprd, :nomeUsina)";
             
 
             $p_sql = Conexao::getConexao()->prepare($sql);
@@ -20,18 +20,16 @@
     }
     public function readOP() {
         try {
-            $sql = "SELECT * FROM ordensproducao ORDER BY numop ASC";
+            $sql = "SELECT * FROM ordensproducao order by idOP asc";
             $result = Conexao::getConexao()->query($sql);
             $lista = $result->fetchAll(PDO::FETCH_ASSOC);
             $f_lista = array();
             foreach ($lista as $l) {
-                $op = new ordemProducao($l['idOP'], $l['numop'], $l['relprd'], $l['nomeusina']);
-                $f_lista[] = $op;
+                $f_lista[] = $this->listaOP($l);
             }
-    
             return $f_lista;
         } catch (Exception $e) {
-            print "Ocorreu um erro ao tentar Buscar Todos: " . $e->getMessage();
+            print "Ocorreu um erro ao tentar Buscar." . $e;
         }
     }
 }

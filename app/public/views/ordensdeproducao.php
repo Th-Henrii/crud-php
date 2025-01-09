@@ -49,80 +49,74 @@ $opdao = new opDAO();
 <br>
 <br>
 <div class="table-responsive">
-    <table class="table table-sm table-bordered table-hover">
-        <thead>
-            <tr>
-                <th>IdOP</th>
-                <th>N° da OP</th>
-                <th>Rel. Produção</th>
-                <th>Nome da Usina</th>
-                <th>Ações</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($opdao->readOP() as $op) : ?>
-                <tr>
-                    <!-- Agora $op é um objeto ordemProducao, então você pode chamar os métodos -->
-                    <td><?= $op->getIdOP() ?></td>
-                    <td><?= $op->getNumOP() ?></td>
-                    <td><?= $op->getRelprd() ?></td>
-                    <td><?= $op->getNomeUsina() ?></td>
-                    <td class="text-center text-dark">
-                        <!-- Botão Editar -->
-                        <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editar<?= $op->getIdOP() ?>" type="button">
-                            Editar
-                        </button>
-                        
-                        <!-- Botão Excluir -->
-                        <a href="../controllers/UsuarioController.php?del=<?= $op->getIdOP() ?>" onclick="return confirm('Tem certeza que deseja excluir?')">
-                            <button class="btn btn-danger btn-sm" type="button">
-                                Excluir
-                            </button>
-                        </a>
-                    </td>
-                </tr>
-                
-                <!-- Modal Editar -->
-                <div class="modal fade" id="editar<?= $op->getIdOP() ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Editar Ordem de Produção</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
+            <table class="table table-sm table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>Senha</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($opdao->readOP() as $op) : ?>
+                        <tr>
+                            <td><?= $usuario->getId() ?></td>
+                            <td><?= $usuario->getNome() ?></td>
+                            <td><?= $usuario->getEmail() ?></td>
+                            <td><?= $usuario->getSenha() ?></td>
+                            <td class="text-center">
+                                <button class="btn  btn-primary btn-sm" data-toggle="modal" data-target="#editar><?= $usuario->getId() ?>" type="submit">
+                                    Editar
                                 </button>
-                            </div>
-                            <div class="modal-body">
-                                <form action="../controllers/UsuarioController.php" method="POST">
-                                    <div class="row">
-                                        <div class="col-md-5">
-                                            <label>N° da OP</label>
-                                            <input type="text" name="numop" value="<?= $op->getNumOP() ?>" class="form-control" required />
-                                        </div>
-                                        <div class="col-md-7">
-                                            <label>Rel. Produção</label>
-                                            <input type="text" name="relprd" value="<?= $op->getRelprd() ?>" class="form-control" required />
-                                        </div>
+                                <a href="../controllers/UsuarioController.php?del=<?= $usuario->getId() ?>">
+                                <button class="btn  btn-danger btn-sm" type="submit" id="del">Excluir</button>
+                                </a>
+                            </td>
+                        </tr>
+                        <!-- Modal -->
+                        <div class="modal fade" id="editar><?= $usuario->getId() ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Editar</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-3">
-                                            <label>Nome da Usina</label>
-                                            <input type="text" name="nomeusina" value="<?= $op->getNomeUsina() ?>" class="form-control" required />
-                                        </div>
+                                    <div class="modal-body">
+                                        <form action="../controllers/UsuarioController.php" method="POST">
+                                            <div class="row">
+                                                <div class="col-md-5">
+                                                    <label>Nome</label>
+                                                    <input type="text" name="nome" value="<?= $usuario->getNome() ?>" class="form-control" require />
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <label>Email</label>
+                                                    <input type="text" name="email" value="<?= $usuario->getEmail() ?>" class="form-control" require />
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <label>Senha</label>
+                                                    <input type="text" name="senha" value="<?= $usuario->getSenha() ?>" class="form-control" require />
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-2">
+                                                    <br>
+                                                    <input type="hidden" name="id" value="<?= $usuario->getId() ?>" />
+                                                    <button class="btn btn-primary" type="submit" name="editar">Cadastrar</button>
+                                                </div>
+                                            </div>
+                                        </form>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-2">
-                                            <br>
-                                            <input type="hidden" name="id" value="<?= $op->getIdOP() ?>" />
-                                            <button class="btn btn-primary" type="submit" name="editar">Cadastrar</button>
-                                        </div>
-                                    </div>
-                                </form>
+
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
+                    <?php endforeach ?>
+                </tbody>
+            </table>
 </div>
