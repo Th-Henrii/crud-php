@@ -1,9 +1,9 @@
 <?php
-include_once "conexao/Conexao.php";
-include_once "dao/UsuarioDAO.php";
-include_once "model/Usuario.php";
-include_once "model/ordemProducao.php";
-include_once "dao/opDAO.php";
+include_once "src/conexao/Conexao.php";
+include_once "src/dao/UsuarioDAO.php";
+include_once "src/model/Usuario.php";
+include_once "src/model/ordemProducao.php";
+include_once "src/dao/opDAO.php";
 //instancia as classes
 $usuario = new Usuario();
 $usuariodao = new UsuarioDAO();
@@ -45,7 +45,7 @@ $usuariodao = new UsuarioDAO();
   </div>
   <div class="offcanvas-body bg-dark">
       <br>
-      <span class="d-block p-2 bg-dark text-white"><a href="views/gestaoDeUsuarios.php" class="text-white bg-dark">Gestão de usuarios</a></span>
+      <span class="d-block p-2 bg-dark text-white"><a href="public/views/gestaoDeUsuarios.php" class="text-white bg-dark">Gestão de usuarios</a></span>
       <br>
       <span class="d-block p-2 bg-dark text-white"><a href="?page=app/ordensdeproducao" class="text-white bg-dark">Ordens de Produção</a></span>
   </div>
@@ -71,12 +71,12 @@ $usuariodao = new UsuarioDAO();
 $requisicao = isset($_GET['page']);
 switch($requisicao) {
   case "app/ordensdeproducao": 
-      include "views/ordensdeproducao.php";
+      include "public/views/ordensdeproducao.php";
       break;
       case "app/gestaodeusuarios": 
-        include "views/gestaoDeUsuarios.php";
+        include "public/views/gestaoDeUsuarios.php";
         break;
   default:
-    include "views/home.php";
+    include "public/views/home.php";
 }
 ?>

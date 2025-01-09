@@ -1,8 +1,8 @@
 <?php
-include_once "../conexao/Conexao.php";
-include_once "../dao/UsuarioDAO.php";
-include_once "../model/Usuario.php";
-
+set_include_path(__DIR__ . '/../../src');
+include_once 'conexao/Conexao.php';
+include_once 'dao/UsuarioDAO.php';
+include_once 'model/Usuario.php';
 //instancia as classes
 $usuario = new Usuario();
 $usuariodao = new UsuarioDAO();

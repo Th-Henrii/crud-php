@@ -1,7 +1,8 @@
 <?php
-include_once "conexao/Conexao.php";
-include_once "model/ordemProducao.php";
-include_once "dao/opDAO.php";
+set_include_path(__DIR__ . '/../../src');
+include_once 'conexao/Conexao.php';
+include_once 'dao/UsuarioDAO.php';
+include_once 'model/Usuario.php';
 
 $op = new ordemProducao();
 $opdao = new opDAO();
