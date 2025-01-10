@@ -87,7 +87,7 @@
 <body>
     <div class="login-container">
         <h2>Login</h2>
-        <form action="app/controllers/loginController.php" method="POST">
+        <form action="app/src/controllers/loginController.php" method="POST">
             <label for="emil">E-mail</label>
             <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
             

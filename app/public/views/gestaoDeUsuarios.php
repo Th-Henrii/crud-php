@@ -37,7 +37,7 @@ $usuariodao = new UsuarioDAO();
         </div>
     </nav>
     <div class="container">
-        <form action="../app/src/controllers/UsuarioController.php" method="POST">
+        <form action="../../app/src/controllers/UsuarioController.php" method="POST">
             <div class="row">
                 <div class="col-md-3">
                     <label>Nome</label>

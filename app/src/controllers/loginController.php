@@ -16,7 +16,7 @@ include_once "../conexao/Conexao.php";
                session_start();
                $_SESSION['id_usuario_logado'] = $logado['id'];    // Salva o ID do usuário
                $_SESSION['nome_usuario'] = $logado['nome'];
-               header("Location:../main.php");
+               header("Location:../../main.php");
                exit();
             } 
             else{
