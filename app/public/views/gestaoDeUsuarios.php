@@ -6,6 +6,18 @@ include_once 'model/Usuario.php';
 //instancia as classes
 $usuario = new Usuario();
 $usuariodao = new UsuarioDAO();
+
+$request = $_SERVER['REQUEST_URI'];
+
+switch ($request) {
+    case '/usuario':
+        include_once 'controllers/UsuarioController.php';
+        break;
+    default:
+        http_response_code(404);
+        echo "Página não encontrada";
+        break;
+}
 ?>
 
 <!DOCTYPE html>
@@ -37,7 +49,7 @@ $usuariodao = new UsuarioDAO();
         </div>
     </nav>
     <div class="container">
-        <form action="../../app/src/controllers/UsuarioController.php" method="POST">
+        <form action="/usuario" method="POST">
             <div class="row">
                 <div class="col-md-3">
                     <label>Nome</label>
